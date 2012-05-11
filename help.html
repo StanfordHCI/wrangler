@@ -1,0 +1,208 @@
+<style type="text/css" title="currentStyle">
+	@import "style/layout.css";
+	@import "style/table.css";
+	@import "style/editor.css";
+	@import "style/wrangler.css";
+</style>
+
+
+
+<script type="text/javascript" src="lib/ThemeRoller/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="lib/Highlight/highlight.js"></script>
+<script type="text/javascript" src="lib/layout/jquery.layout.min.js"></script>
+<script type="text/javascript" src="lib/hoverIntent/hoverIntent.js"></script>
+<script type="text/javascript" src="lib/Date/date.js"></script>
+
+<script type="text/javascript" language="javascript" src="lib/DataTable/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/d3/d3.min.js">  </script>
+<script type="text/javascript" src="lib/datavore/datavore-r0.1.js">  </script>
+<script type="text/javascript" src="dw.js">  </script>
+
+<script type="text/javascript" src="doc/doc.js">  </script>
+
+
+
+
+
+
+
+<script type="text/javascript">  
+
+var w = dw.wrangle()
+
+var myLayout; 
+
+$(document).ready(function() {
+	
+	
+	myLayout = $('body').layout({
+		north: {
+				spacing_open:			0
+			,	resizable: 				false
+			,	slidable:				false
+			,	fxName:					"none"
+			},
+			south: {
+					spacing_open:			0
+				,	resizable: 				false
+				,	slidable:				false
+				,	fxName:					"none"
+				},
+			west: {
+				minSize: 310
+			}	
+	});
+
+
+
+
+	var transformNav = jQuery('#transformEditor').addClass('help').css("overflow-y", 'auto');
+	jQuery('#profilerWestPanel').css('overflow','auto')
+	jQuery('#profilerCenterPanel').css('overflow','auto')
+	var centerPanel = jQuery('#profilerCenterPanel').addClass('help');
+	var doc = dw.doc();
+	
+	
+	var help = function(obj, images){
+		centerPanel.empty();
+		var name = dw.jq('div').addClass('transformName').append(obj.name);
+
+		var	descriptionHeader = dw.jq('div').addClass('transformDescriptionHeader').addClass('helpSubHeader').append('Description');
+
+		var	description = dw.jq('div').addClass('transformDescription').addClass('helpContent').append(obj.description);
+
+		var	executionHeader = dw.jq('div').addClass('transformExecutionHeader').addClass('helpSubHeader').append('Execution');
+
+		
+			
+			
+		var tlink = dw.jq('div').append(name);
+		centerPanel.append(tlink)
+
+		centerPanel.append(description)
+		
+		
+		if(obj.execution){
+			var	execution = dw.jq('div').addClass('transformExecution').addClass('helpContent').append(obj.execution);
+			centerPanel.append(executionHeader)
+			centerPanel.append(execution)
+		}
+		
+		images = images || [];
+		
+		images.forEach(function(image, i){
+			centerPanel.append(dw.jq('div').addClass(image+'_image').addClass('help_image'));			
+		})
+		
+		if(obj.img){
+			centerPanel.append(dw.jq('div').addClass(obj.img+'_image').addClass('help_image'));			
+		}
+		
+
+	}
+	
+	var add_nav_menu = function(obj){
+		var name = dw.jq('div').addClass('helpMenu').append(obj.name);
+		
+		transformNav.append(name)
+	}
+	var add_nav_sub = function(obj, images){
+		var name = dw.jq('div').addClass('transformName').append(obj.name);
+		var tlink = dw.jq('div').addClass('transformLink').append(name);
+		transformNav.append(tlink)
+		name.click(function(){
+			help(obj, images)
+		})
+	}
+	
+	add_nav_menu(doc.getting_started);
+	dv.keys(doc.getting_started).forEach(function(k){
+		var transform = doc.getting_started[k];
+		add_nav_sub(transform)
+	})
+	
+	add_nav_menu(doc.interactions);
+	dv.keys(doc.interactions).forEach(function(k){
+		var transformType = doc.interactions[k];
+		add_nav_sub(transformType)
+	})
+	
+	add_nav_menu(doc.transform);
+	dv.keys(doc.transform).filter(function(t){return t!='name'}).sort().reverse().forEach(function(k){
+		var transformType = doc.transform[k];
+		dv.keys(transformType).sort().forEach(function(t){
+
+			add_nav_sub(transformType[t], [transformType[t].name.toLowerCase()+'Before', transformType[t].name.toLowerCase()+'After']);
+			
+		})
+	})
+	
+	var start = (location.hash && location.hash === '#export_script') ? doc.getting_started.exporting_scripts : doc.getting_started.wrangler_interface;
+	console.log(location.hash, start)
+	help(start)
+
+})
+
+
+
+</script>
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>DataWrangler</title>
+	
+	</head>
+	
+	
+	
+	
+	<body id="dt_example">
+		
+			<div class="ui-layout-north" id='wranglerNorthPanel'>
+				<div id='wranglerTitleDiv'>
+					<span id='wranglerTitle1'>Data</span><span id='wranglerTitle2'>Wrangler</span>
+															<a id='wranglerHelpLink' href='../contact/' target=”_blank”>Feedback</a>
+				</div>
+				<div class='clear'></div>
+
+			</div>
+
+
+			<div class="ui-layout-west" id='profilerWestPanel'>
+
+					<div id="transformEditor" class='transformEditor'>
+
+					</div>
+
+			</div>
+
+
+
+
+			<div class="ui-layout-center" id='profilerCenterPanel'>
+			
+				
+				
+				
+
+
+
+
+			</div>	
+			
+
+			<div class="ui-layout-south">
+
+			</div>
+
+			
+			
+			
+	
+		
+	</body>
+</html>

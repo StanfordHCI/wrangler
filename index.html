@@ -1,0 +1,229 @@
+<style type="text/css" title="currentStyle">
+	@import "style/layout.css";
+	@import "style/table.css";
+	@import "style/editor.css";
+	@import "style/wrangler.css";
+</style>
+
+
+
+<script type="text/javascript" src="lib/ThemeRoller/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="lib/Highlight/highlight.js"></script>
+<script type="text/javascript" src="lib/layout/jquery.layout.min.js"></script>
+<script type="text/javascript" src="lib/hoverIntent/hoverIntent.js"></script>
+
+<script type="text/javascript" language="javascript" src="lib/DataTable/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="lib/d3/d3.min.js">  </script>
+<script type="text/javascript" src="lib/datavore/datavore-r0.1.js">  </script>
+<script type="text/javascript" src="dw.js">  </script>
+<script type="text/javascript" src="test/crime.js">  </script>
+
+<script type="text/javascript">  
+
+var w = dw.wrangle()
+
+var myLayout; 
+
+$(document).ready(function() {
+	
+	var browserName=navigator.appName;
+	
+	var isSupported = navigator.userAgent.match(/Chrome|Safari|Firefox/);
+
+	if(isSupported===null) alert('Data Wrangler has only been tested in Chrome, Safari and Firefox.  For best performance, we recommend you use Chrome or Safari.')
+	
+	myLayout = $('body').layout({
+		north: {
+				spacing_open:			0
+			,	resizable: 				false
+			,	slidable:				false
+			,	fxName:					"none"
+			},
+			south: {
+					spacing_open:			0
+				,	resizable: 				false
+				,	slidable:				false
+				,	fxName:					"none"
+				},
+			west: {
+				minSize: 310
+			}	
+	});
+
+	
+	
+
+	var container = jQuery('#table')
+	var previewContainer = jQuery('#preview')
+
+	var initial_transforms = [];
+
+	var startWrangler = function(dt){
+
+		dw.wrangler({
+			tableContainer:container,
+			table:dt,
+			transformContainer:jQuery('#transformEditor'),
+			previewContainer:previewContainer,
+      dashboardContainer:jQuery("#wranglerDashboard"),
+			initial_transforms:initial_transforms
+		})
+
+	}
+
+
+
+	var hash = window.location.hash.substr(0), initial_transforms, name = hash;
+	if(hash.length){
+		var tindex = hash.indexOf('_');
+		var name;
+		if(tindex!=-1){
+			index = Number(hash.substr(tindex+1))-1;
+
+			name = hash.substr(1, tindex-1)
+			
+			if(name==='crime'){
+				initial_transforms = [
+					dw.filter(dw.empty()),
+					dw.extract('Year').after(/in /).on(/.*/),
+					dw.set_name('extract', ['State']),
+					dw.fill('State'),
+					dw.filter(dw.starts_with('Year', 'Reported', true)),
+					dw.unfold('Year').measure(['Property_crime_rate'])
+				]
+				
+			}
+			else if(name==='sat'){
+				initial_transforms = [
+					dw.filter(dw.rowIndex([0,1]))
+					,
+					dw.fill().row(dw.row(dw.rowIndex([0]))).direction(dw.RIGHT)
+				]
+			}
+			initial_transforms = initial_transforms.slice(0, index)
+		}
+		else{
+			name = hash.substr(1)
+		}
+		var dt = dv.examples[name] || tfill;
+		startWrangler(dt);
+	}
+	else{
+
+
+		jQuery('#preview').hide()
+
+		var upload = dw.jq('div').attr('id', 'uploadContainer')
+		
+		
+		var select = dw.jq('select').addClass('wranglerExampleOptions');
+		var selectPrompt = dw.jq('span').append('Example Data:').addClass('wranglerPrompt');
+		jQuery('#table').append(upload)
+
+		var prompt = dw.jq('div').attr('id','uploadPrompt').append('Paste data below to begin wrangling').addClass('wranglerPrompt');
+		upload.append(prompt)
+		
+		upload.append(selectPrompt).append(select)
+
+		upload.append(dw.jq('button').attr('id','wranglerInputSubmit').append('Wrangle'))
+		
+
+		
+		var inputArea = dw.jq('textArea').attr('id','wranglerInput');
+		upload.append(inputArea)
+
+		inputArea.attr('value', crime)		
+
+		jQuery('button').click(function(){
+			var val = inputArea.attr(
+				'value');
+
+			var dt = dv.table(val)
+
+			initial_transforms = dw.raw_inference(val).transforms
+
+			startWrangler(dt)			
+		})
+		
+	}
+
+
+		var add_export_option = function(type, name){
+			dw.add_select_option(select, name, type);
+		}
+		
+		select.change(function(){
+			inputArea.attr('value', select.val())
+			jQuery('.exportHeader').removeClass('selectedExportHeader');				
+			jQuery(this).addClass('selectedExportHeader')
+			
+		})
+		add_export_option(crime, 'Crime');
+		add_export_option(labor, 'Labor');
+		add_export_option(migration, 'Migration');
+
+})
+
+
+
+</script>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<title>DataWrangler</title>
+
+</head>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	
+	
+	
+	
+	
+	<body id="dt_example">
+		
+			<div class="ui-layout-north" id='wranglerNorthPanel'>
+
+        <div id='wranglerDashboard'>
+	
+        </div>
+
+			</div>
+
+
+			<div class="ui-layout-west" id='profilerWestPanel'>
+
+					<div id="transformEditor" class='transformEditor'>
+
+					</div>
+
+			</div>
+
+
+
+
+			<div class="ui-layout-center" id='profilerCenterPanel'>
+			
+				<div id="table"></div>
+				<div id="preview"></div>
+				<div class="spacer"></div>
+
+
+
+
+			</div>	
+			
+
+			<div class="ui-layout-south">
+
+			</div>
+
+			
+			
+			
+	
+		
+	</body>
+</html>

@@ -1,0 +1,391 @@
+#scriptBanner{
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	color:white;
+	background-color: #627AAD;
+	border-bottom: 1px solid lightGrey;
+	color: white;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	font-size: 13px;
+	height: 19px;
+	padding-left: 4px;
+}
+
+#suggestionsBanner{
+	color:white;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	color:white;
+	background-color: #627AAD;
+	border-bottom: 1px solid lightGrey;
+	color: white;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	font-size: 13px;
+	height: 19px;
+	width:100%;
+}
+
+#suggestionsTitle{
+	padding-left:4px;
+}
+
+#suggestionsTitle, #scriptTitle{
+	
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.scriptIO{
+	float:right;
+}
+
+#scriptImport{
+	cursor: pointer;
+	float: right;
+	font-size: 10px;
+	visibility:hidden;
+	margin-right: 5px;
+	padding-top: 3px;
+}
+
+#scriptExport{
+	cursor: pointer;
+	float: right;
+	font-size: 10px;
+	margin-right: 3px;
+	padding-top: 3px;
+	padding-right:4px;
+}
+
+.menu{
+	background:#627AAD;
+	width:100%;
+}
+
+.editableClause{
+	color: #3B5998;
+	font-weight:bold;
+} 
+
+.selected.suggestion .editableClause.updatedColumn{
+	color: #BCBD22;
+}
+
+
+
+.selected.suggestion .editableClause.droppedColumn{
+	color: #D62728;
+}
+
+.selected.suggestion .editableClause.droppedRow{
+	color: #D62728;
+}
+
+.selected.suggestion .editableClause.extract{
+	color: #17BECF;
+}
+
+.selected.suggestion .editableClause.unfold, .selected .editableClause.fold{
+	color: #9467BD;
+}
+
+
+.editableClause:hover{
+	text-decoration:underline;
+	cursor:hand;
+}
+
+.editorButton{
+	visibility:hidden;
+	height:16px;
+	width:16px;
+	float:right;
+	opacity:.4;
+	cursor:hand;
+}
+
+.selected .editorButton{
+	visibility:visible;
+}
+
+.editorButton:hover{
+	opacity:1;
+}
+
+.addButton{
+	background-image: url("images/add-icon16.png")
+}
+
+.invalid .primaryButton{
+	background-image: url("images/warning-icon.png")
+}
+
+.inactive{
+	background-color:#efefef;
+}
+
+.invalid{
+	background-color:#FFA7A4;
+}
+
+/*undoButton*/
+.active .editorButton{
+		background-image: url("images/Button-Delete-icon16.png")
+}
+
+.inactive .editorButton{
+		background-image: url("images/add-icon16.png")
+}
+
+.deleteButton.editorButton{
+	background-image: url("images/delete-icon16.png")
+}
+
+.annotateButton.editorButton{
+	background-image: url("images/notepad.png");
+	visibility:hidden;
+}
+
+.descriptionEditor{
+	display:inline;
+	float:left;
+	direction: ltr;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	font-size: 12px;
+	color: #4B4B4B;
+	text-align: left;
+	display: inline;
+	float: left;
+	line-height: 18px;
+	width: 80%;
+	padding-left:18px;
+}
+
+#editorTransformContainer > .suggestion:first-child .descriptionEditor{
+	padding-left:18px;
+}
+
+.scriptTransform .descriptionEditor{
+	
+	padding-bottom:8px;
+	padding-left:0px;
+	width:80%;
+
+}
+
+.scriptTransform:first-child{
+	border-top:0px;
+}
+
+.scriptTransform{
+	border-top:1px dashed lightGrey;
+	padding-top:10px;
+	padding-right:4px;
+}
+
+.suggestion{
+	min-height:20px;
+	padding-bottom:10px;
+
+	padding-top:10px;
+	padding-right:4px;
+}
+
+.firstSuggestion.suggestion{
+	border-bottom:1px dashed lightGrey;
+}
+
+
+.detail_toggler{
+	background-image: url("images/rightArrow.png");
+	height:18px;
+	width:18px;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+}
+
+.detail_toggler.detail_expanded{
+	background-image: url("images/downArrow.png");
+}
+.firstSuggestion.suggestion.selected .descriptionEditor, .firstSuggestion.suggestion .descriptionEditor, .scriptTransform .descriptionEditor{
+	background-repeat:no-repeat;
+}
+
+.firstSuggestion.suggestion.emptySuggestion{
+	height:18px;
+	background-image: none;
+
+}
+
+.suggestion.selected{
+	background:#D6F6F6;
+	cursor:pointer;
+}
+
+.suggestion.emptySuggestion.selected{
+	background:#FFFFFF;
+}
+
+
+
+.tmenu{
+	background: #627AAD;
+	border: 1px #1D4088;
+	color: white;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	font-size: 10px;
+	height: 21px;
+
+}
+
+div.tmenu{
+	margin:0;
+	margin-top:0px;
+	margin-bottom:0px;
+	padding:0;
+	position:absolute;
+	width:101%;
+}
+
+.tmenu span{
+	width:40px;
+	float:left;
+	color:white;
+	text-align:center;
+	overflow:hidden;
+	height: 21px;
+	padding-bottom: 0px;
+	padding-left: 6px;
+	padding-right: 11px;
+	padding-top: 0px;
+	background-color:#627AAD;
+
+}
+
+.tmenu span.clearMenu{
+	padding-right:0px;
+	margin-left:30px;
+	border-left:1px solid black;
+	
+}
+
+
+
+#clearButton{
+	border-left: 1px solid black;
+	color: #111;
+	cursor: pointer;
+	float: right;
+	font-weight: bold;
+	height: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 4px;
+}
+
+p.submenu{
+	text-align:left;
+	margin-left:7px;
+
+}
+
+.openMenu{
+	background-color: #12ea31;
+}
+
+a{
+	color:#FFF;
+	text-decoration:none;
+}
+
+.submenu a:hover{
+	text-decoration:underline;
+	
+}
+
+.tmenu p{
+	cursor:hand;
+	padding:0px;
+	margin-top:4px;
+	
+}
+
+#transformMenu{
+	margin:0px;
+}
+
+.submenu{
+
+}
+
+.green{background:#6AA63B url('images/green-item-bg.jpg') top left no-repeat;}
+.yellow{background:#FBC700 url('images/yellow-item-bg.jpg') top left no-repeat;}
+.red{background:#D52100 url('images/red-item-bg.jpg') top left no-repeat;}
+.purple{background:#5122B4 url('images/purple-item-bg.jpg') top left no-repeat;}
+.blue{background:#0292C0 url('images/blue-item-bg.jpg') top left no-repeat;}
+
+#wranglerInput{
+	width:400;
+	height:400;
+	margin-left:70px;
+	margin-top:100px;
+}
+
+.detail_editor{
+	width:100%;
+}
+
+.detail_editor div.label{
+	margin-left:10px;
+	font-size:12px;
+	text-align:right;
+	width:100px;
+	min-width:100px;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	display:inline-block;
+}
+
+.detail_editor_input{
+	float:right;
+	width:160px;
+	text-align:right;
+	min-width:160px;
+	max-width:160px;
+	margin-right:4px;
+}
+
+.tsubmenu{
+	width:80px;
+
+	background: #627AAD;	
+	position:absolute;
+}
+
+#scriptContainer{
+	max-height:40%;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+
+#editorTransformContainer{
+	overflow-y:hidden;
+}
+
+#suggestionsContainer{
+	overflow-y:auto;
+	max-height:100%;
+}
+
+#scriptTransformContainer{
+	height:30%;
+	max-height:30%;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+
+
+#editorContainer{
+	height:60%;
+	min-height:60%;
+	max-height:60%;
+    overflow-y:hidden;
+}

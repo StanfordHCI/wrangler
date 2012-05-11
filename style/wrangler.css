@@ -1,0 +1,513 @@
+.clear { clear: both;}
+
+.ui-layout-pane{
+	padding:0px;
+}
+
+.ui-layout-north{
+	padding:0px;
+	
+}
+
+
+#wranglerTitleDiv{
+	font-family: 'Lucida Grande';
+	font-size: 22px;
+	font-weight: bold;
+	padding:0px 0px 0px 4px;
+
+	display:inline-block;
+
+}
+
+#wranglerTitle1{
+	color: #D55;
+}
+
+#wranglerTitle2{
+	color: #555;
+}
+
+#wranglerHelpLink{
+	color: #555;
+	font-size:18px;
+	padding-top:4px;
+	float:right;
+	margin-right:30px;
+}
+	
+
+#table{
+	overflow-x:auto;
+	height:100%;
+}
+
+#wranglerInput{
+	display: block;
+	height: 80%;
+	margin-left: 0px;
+	margin-top: 10px;
+	width: 90%;
+}
+
+#wranglerInputSubmit{
+	float: right;
+	font-size: 20px;
+	margin-right: 10%;
+	margin-top: -2px;
+	padding: 2px 28px;
+	background-color: #3B5998;
+	border-color: #D8DFEA #0E1F5B #0E1F5B #D8DFEA;
+	border-style: solid;
+	border-width: 1px;
+	color: white;
+	cursor: pointer;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+
+}
+
+#uploadContainer{
+	border: 0px solid #919191;
+	height: 90%;
+	margin-left: 5%;
+	margin-top: 5%;
+	width: 90%;
+	font-family: 'Lucida Grande', Helvetica, Arial;
+}
+
+#uploadContainer select{
+	font-family: 'Lucida Grande', Helvetica, Arial;
+}
+
+#uploadPrompt, #wranglerPrompt, .exportHeader, .wranglerPrompt{
+	font-family: 'Lucida Grande', Helvetica, Arial;
+	font-size: 20px;
+	margin-left: 0px;
+	margin-top: 30px;
+	padding-top: 0px;
+	text-align: center;
+	color:black;
+}
+
+#scriptInstructions{
+
+	padding-top:15px;
+	margin-top:0px;
+	color:#666;
+}
+
+#uploadPrompt{
+	margin-bottom:16px;
+	text-align: left;
+}
+
+.exportHeader{
+	margin-right:50px;
+	cursor:pointer;
+	color:#999999;
+}
+
+.selectedExportHeader, .exportHeader:hover{
+	color:#000000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+input, input[type="password"], input[type="search"], isindex {
+-webkit-appearance: textfield;
+-webkit-rtl-ordering: logical;
+-webkit-user-select: text;
+background-color: white;
+border: 2px inset;
+cursor: auto;
+padding: 0px;
+}
+
+input[type='radio']{
+	-webkit-appearance: radio;	
+}
+
+
+
+
+
+button.ui-button-icon-only {
+width: 1.1em;
+height:1.1em;
+}
+.ui-button-icon-only {
+width: 1.1em;
+height:1.1em;
+}
+.ui-button {
+cursor: pointer;
+display: inline-block;
+margin-right: 0.1em;
+overflow: visible;
+padding: 0px;
+position: relative;
+text-align: center;
+text-decoration: none !important;
+zoom: 1;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+background: #DFEFFC url(file://localhost/Users/skandel/Documents/projects/datavore/wrangler/lib/ThemeRoller/css/redmond/images/ui-bg_glass_85_dfeffc_1x400.png) repeat-x 50% 50%;
+border: 1px solid #C5DBEC;
+color: #2E6E9E;
+font-weight: bold;
+}
+.ui-widget {
+font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+font-size: 12px;
+}
+
+.exportOptions {
+	font-size:18px;
+}
+
+
+
+
+#transformEditor.help{
+	padding-left:10px;
+	padding-top:6px;
+
+}
+
+#profilerCenterPanel.help{
+	padding-left:10px;
+	padding-top:6px;
+
+}
+
+.help{
+	font-family: 'Lucida Grande', Helvetica, Arial;
+}
+
+#profilerCenterPanel.help .transformName{
+	font-size:26px;
+	margin-bottom:10px;
+}
+
+#profilerCenterPanel.help .helpContent{
+	font-size:18px;
+	width:80%;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+
+#profilerCenterPanel.help .helpSubHeader{
+	font-size:20px;
+	margin-bottom:5px;
+	margin-top:15px;
+}
+
+.help .helpMenu{
+	font-size:22px;
+	margin-top:4px;
+	margin-bottom:8px;
+	margin-left:10px;
+}
+
+.help .transformLink{
+	margin-bottom:8px;
+	margin-left:26px;
+	font-size:16px;
+	cursor:pointer;
+}
+
+.help .transformLink:hover{
+	color:#33F;
+}
+
+
+.help .help_image{
+	margin-top:20px;
+}
+
+.wrangler_interface_image{
+	background-image:url("images/interface.png");
+	height:450px;
+	width:900px;
+}
+
+.extractBefore_image{
+		background-image:url("images/extractBefore.png");
+		
+		height:350px;
+		width:490px;
+		margin-right:10px;
+		display:inline-block;
+
+}
+.extractAfter_image{
+		background-image:url("images/extractAfter.png");
+		height:350px;
+		width:500px;
+		display:inline-block;
+
+}
+
+
+.fillBefore_image{
+		background-image:url("images/fillBefore.png");
+		
+		height:350px;
+		width:560px;
+		margin-right:10px;
+		display:inline-block;
+
+}
+.fillAfter_image{
+		background-image:url("images/fillAfter.png");
+		height:350px;
+		width:560px;
+		display:inline-block;
+
+}
+
+
+.transposeAfter_image{
+		background-image:url("images/transposeAfter.png");
+		height:410px;
+		width:960px;
+		display:inline-block;
+
+}
+
+
+.deleteAfter_image{
+		background-image:url("images/deleteAfter.png");
+		height:350px;
+		width:560px;
+		display:inline-block;
+
+}
+.deleteBefore_image{
+		background-image:url("images/deleteBefore.png");
+		height:350px;
+		width:550px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+.cutAfter_image{
+		background-image:url("images/cutAfter.png");
+		height:350px;
+		width:480px;
+		display:inline-block;
+
+}
+.cutBefore_image{
+		background-image:url("images/cutBefore.png");
+		height:350px;
+		width:550px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+
+.promoteAfter_image{
+		background-image:url("images/promoteAfter.png");
+		height:350px;
+		width:480px;
+		display:inline-block;
+
+}
+.promoteBefore_image{
+		background-image:url("images/promoteBefore.png");
+		height:350px;
+		width:550px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+.unfoldAfter_image{
+		background-image:url("images/unfoldAfter.png");
+		height:440px;
+		width:950px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+.foldAfter_image{
+		background-image:url("images/foldAfter.png");
+		height:440px;
+		width:950px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+.splitAfter_image{
+		background-image:url("images/splitAfter.png");
+		height:350px;
+		width:660px;
+		display:inline-block;
+
+}
+.splitBefore_image{
+		background-image:url("images/splitBefore.png");
+		height:350px;
+		width:450px;
+				margin-right:10px;
+		display:inline-block;
+
+}
+
+
+#wranglerHelpDiv{
+		float:right;
+			margin-top:10px;
+}
+
+#wranglerHelpDiv a{
+	color:#000000;
+	display:inline;
+
+}
+
+.wranglerExampleOptions{
+	font-size:16px;
+	border: 1px solid #BDC7D8;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+	margin-bottom:-2px;
+}
+
+.wranglerModeSelect{
+  font-size:16px;
+  border: 1px solid #BDC7D8;
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+  margin-bottom:-2px;
+}
+
+.demoOptions{
+	cursor:pointer;
+	font-weight:bold;
+		color:#D55;
+		
+}
+
+.demoOptions:hover{
+	color:#33F;
+}
+
+a.runtimeLink{
+	font-weight:bold;
+	color:black;
+}
+a.runtimeLink:hover { color: #D55; }
+
+.terminal {
+	font-family: Andale Mono, Courier New;
+	font-weight: bold;
+	font-size: 14px;
+	color: #000;
+}
+
+div.menu_group {
+	display:inline;
+	font-family:'Lucida Grande', Helvetica, Arial;
+	height:100%;
+	max-height:100%;
+	padding-top:4px;
+	margin-top:4px	;
+
+}
+
+div#menu{
+	padding-top:0px;
+	margin-top:0px;
+	max-height:35px;
+	height:35px;
+	min-height:35px;
+	background-color:#627AAD;
+	min-width:100%;
+	width:100%;
+	display:inline-block;
+	white-space: nowrap;
+}
+
+div.menu_option {
+	display:inline-block;
+	padding-left:16px;
+	font-size:14px;
+	padding-top:8px;
+	padding-bottom:8px;
+	padding-right:16px;
+	height:100%;
+	cursor:pointer;
+}
+
+div.selected_menu_option, div.menu_option:hover {
+	color:#627AAD;
+	background-color: #EFEFEF;
+	cursor:pointer;
+}
+
+#wranglerDashboard{
+	color:white;
+	min-height:90px;
+	background-color: #EFEFEF;
+	font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;	
+	font-size:14px;
+	min-width:100%;
+	width:100%;
+			overflow-x:hidden;
+}
+
+#wranglerDashboard input{
+	border:1px solid #BDC7D8;
+	padding: 3px 3px 3px 3px;
+	font-size:14px;
+}
+
+#wranglerDashboard .label{
+	color:#1D2A5B;
+	margin-bottom:4px;
+}
+
+#wranglerDashboard select{
+	border: 1px solid #BDC7D8;
+	padding: 3px 3px 3px 3px;
+	font-size:14px;
+		overflow-x:hidden;
+}
+
+.detail_editor_container{
+	margin-top:10px;
+	
+	margin-left:10px;
+    white-space: nowrap;
+	overflow-x:hidden;
+}
+
+.editor_wrapper {
+	display:inline-block;
+	padding-right:4px;
+
+
+}
+
+.editor_wrapper .label{
+	color:black;
+}
+
+.ui-layout-north{
+	background-color: #EFEFEF;
+}
