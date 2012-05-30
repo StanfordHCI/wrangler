@@ -446,8 +446,9 @@ dw.display_name = function(name){
         }
     }
 
-
-
+    /* The method dw.JSON.stringify is adapted from Douglas Crockford's JSON library.
+    ** https://github.com/douglascrockford/JSON-js
+    */
     if (typeof dw.JSON.stringify !== 'function') {
         dw.JSON.stringify = function (value, replacer, space) {
 
